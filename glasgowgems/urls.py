@@ -23,6 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     #url(r'^gems/',include('glasgowgems.urls')),
-    url(r'^/about/', views.about, name='about'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
