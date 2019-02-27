@@ -4,7 +4,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Glasgow Gems index! <br/> <a href='/about/'>About</a>.")
+    context_dict = {'boldmessage':"Glasgow Gems"}
+    return render(request,'gems/index.html',context=context_dict)
 
 def about(request):
-    return HttpResponse("Glasgow Gems About! <br/> <a href='/'>Index</a>.")
+    context_dict = {'boldmessage':"This is the about page!"}
+    return render(request,'gems/about.html',context=context_dict)
+    

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Glasgow Gems</title>
+    </head>
+
+    <body>
+        <h1>Glasgow Gems</h1>
+        <div>
+            Sharing Glasgow's architecture<br />
+            <strong>{{ boldmessage }}</strong>
+        </div>
+        <div>
+            <a href="{% url 'about' %}">About</a><br />
+            <img src="{% static "images/necropolis_landscape.jpg" %}"
+                alt="Necropolis Landscape"/>
+        </div>
+    </body>
+</html>

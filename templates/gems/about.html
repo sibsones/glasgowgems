@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Glasgow Gems</title>
+    </head>
+
+    <body>
+        <h1>About</h1>
+        <div>
+            <strong>{{ boldmessage }}</strong>
+        </div>
+        <div>
+            <a href="{% url 'index' %}">Index</a><br />
+            <img src="{{ MEDIA_URL }}glasgow_uni.jpeg"/>
+        </div>
+    </body>
+</html>
