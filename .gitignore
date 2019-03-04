@@ -115,5 +115,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# database
-db.sqlite3
+# Eclipse Core
+.project
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
