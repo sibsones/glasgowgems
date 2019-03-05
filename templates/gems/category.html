@@ -27,7 +27,7 @@
 
 	<div>
 		{% if category %}
-			<a href="{% url 'add_gem' %}">Add a New Gem</a><br />
+		<a href="/category/{{category.slug}}/add_gem/">Add Gem</a> <br/>
         {% endif %}
 	</div>
 
