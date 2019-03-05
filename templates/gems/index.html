@@ -11,8 +11,35 @@
         <h1>Glasgow Gems</h1>
         <div>
             Sharing Glasgow's architecture<br />
-            <strong>{{ boldmessage }}</strong>
         </div>
+		
+		<div>
+		{% if categories %}
+		<h2> Categories to be changed into a dropdown </h2>
+		<ul>
+			{% for category in categories %}
+				<li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<strong>There are no categories present.</strong>
+		{% endif %}
+		</div>
+		
+		
+		<div>
+		{% if gems %}
+		<h2>Most Liked Gems<h2>
+		<ul>
+			{% for gem in gems %}
+				<li><a href="{{ gem.url }}">{{ gem.name }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<strong>No gems currently in index.</strong>
+		{% endif %}
+		</div>
+
         <div>
             <a href="{% url 'about' %}">About</a><br />
             <img src="{% static "images/necropolis_landscape.jpg" %}"
