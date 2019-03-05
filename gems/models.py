@@ -3,7 +3,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 class Category(models.Model):
-	name = models.CharField(max_length=30, unique=True, blank=False)
+	name_max_length = 128
+	name = models.CharField(max_length=name_max_length, unique=True, blank=False)
 	description = models.CharField(max_length=200)
 	slug = models.SlugField(unique=True)
 	
@@ -19,9 +20,10 @@ class Category(models.Model):
 
 # Gem = Piece of architecture
 class Gem(models.Model):
+	name_max_length = 128
 	category = models.ForeignKey(Category)
 	
-	name = models.CharField(max_length=99, unique=True)
+	name = models.CharField(max_length=name_max_length, unique=True)
 	address = models.CharField(max_length=99)
 	description = models.CharField(max_length=200)
 	

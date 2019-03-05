@@ -22,5 +22,14 @@
 		The specified category does not exist!
 	{% endif %}
 	</div>
+
+	<a href="{% url 'index' %}">Home</a><br />
+
+	<div>
+		{% if category %}
+			<a href="{% url 'add_gem' %}">Add a New Gem</a><br />
+        {% endif %}
+	</div>
+
 </body>
 </html>
