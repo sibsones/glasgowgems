@@ -2,34 +2,32 @@
 
 <html>
     <head>
-        <title>Glasgow Gems</title>
+        {% if category %}
+            <title>Glasgow Gems - {{ category.name }}</title>
+        {% else %}
+            <title>Glasgow Gems - No such category</title>
+        {% endif %}
     </head>
 
     <body>
-	<div>
-	{% if category %}
-		<h1>{{ category.name }}</h1>
-		{% if gems %}
-			<ul>
-			{% for gem in gems %}
-				<li><a href="{{ gem.url }}">{{ gem.name }}</a></li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<strong>No gems currently in category.</strong>
-		{% endif %}
-	{% else %}
-		The specified category does not exist!
-	{% endif %}
-	</div>
-
-	<a href="{% url 'index' %}">Home</a><br />
-
-	<div>
-		{% if category %}
-		<a href="/category/{{category.slug}}/add_gem/">Add Gem</a> <br/>
+    <div>
+    {% if category %}
+        <h1>{{ category.name }}</h1>
+        <p>{{ category.description }}</p>
+        {% if gems %}
+            <ul>
+            {% for gem in gems %}
+                <li><a href="{{ gem.slug }}">{{ gem.name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>No gems currently in category.</strong>
         {% endif %}
-	</div>
+    {% else %}
+        The specified category does not exist!
+    {% endif %}
+    </div>
 
-</body>
+    <a href="{% url 'index' %}">Home</a><br />
+    </body>
 </html>

@@ -4,47 +4,62 @@
 
 <html>
     <head>
-        <title>Glasgow Gems</title>
+        <title>Glasgow Gems - Home</title>
     </head>
 
     <body>
         <h1>Glasgow Gems</h1>
         <div>
-            Sharing Glasgow's architecture<br />
+            Sharing Glasgow's architectural gems<br/>
         </div>
-		
-		<div>
-		{% if categories %}
-		<h2> Categories to be changed into a dropdown </h2>
-		<ul>
-			{% for category in categories %}
-				<li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
-			{% endfor %}
-		</ul>
-		{% else %}
-			<strong>There are no categories present.</strong>
-		{% endif %}
-		</div>
-		
-		
-		<div>
-		{% if gems %}
-		<h2>Most Liked Gems<h2>
-		<ul>
-			{% for gem in gems %}
-				<li><a href="{{ gem.url }}">{{ gem.name }}</a></li>
-			{% endfor %}
-		</ul>
-		{% else %}
-			<strong>No gems currently in index.</strong>
-		{% endif %}
-		</div>
+        
+        <div>
+            <a href="{% url 'add_gem' %}">Add a Gem</a> <br/>
+        </div>
+        
+        <div>
+        <h2> Categories to be changed into a dropdown </h2>
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            There are no categories present.
+        {% endif %}
+        </div>
+        
+        
+        <div>
+        <h2>Most Liked Gems</h2>
+        {% if most_liked_gems %}
+        <ul>
+            {% for gem in most_liked_gems %}
+                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>No gems currently in index.</strong>
+        {% endif %}
+        </div>
+        
+        <div>
+        <h2>Most Recent Gems</h2>
+        {% if most_recent_gems %}
+        <ul>
+            {% for gem in most_recent_gems %}
+                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>No gems currently in index.</strong>
+        {% endif %}
+        </div>
 
         <div>
-			<a href="{% url 'add_category' %}">Add a New Category</a><br />
-            <a href="{% url 'about' %}">About</a><br />
-            <img src="{% static "images/necropolis_landscape.jpg" %}"
-                alt="Necropolis Landscape"/>
+            <a href="{% url 'contact_us' %}">Contact us</a><br />
+            <img src="{% static "images/necropolis_landscape.jpg" %}" alt="Necropolis Landscape"/>
         </div>
     </body>
 </html>

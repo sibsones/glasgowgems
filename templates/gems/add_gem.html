@@ -3,26 +3,30 @@
 <html>
 
     <head>
-        <title>Glasgow Gems</title>
+        <title>Glasgow Gems - Add a Gem</title>
     </head>
 
     <body>
-        {% if category %}
-        <h1>Add a Gem to {{ category.name }}</h1>
-            <form id="gem_form" method="post" action="/category/{{category.slug}}/add_gem/">
+        <h1>Add a new Gem!</h1>
+        <div>
+            <form id="gem_form" enctype="multipart/form-data" method="post" action="{% url 'add_gem' %}">
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
+                    <!-- helps to debug form validation, just for reference, delete later
+                    {% if hidden.errors %}
+                        {{ hidden.errors }}
+                        {{ hidden.name }}
+                    {% endif %} -->
                 {% endfor %}
                 {% for field in form.visible_fields %}
                     {{ field.errors }}
                     {{ field.help_text }}
-                    {{ field }}
+                    {{ field }}<br>
                 {% endfor %}
-                <input type="submit" name="submit" value="Create Gem" />
+                <input type="submit" name="submit" value="Add Gem" />
             </form>
-        {% else %}
-                The specified category doesn't exist!
-        {% endif %}
+        </div>
+        <p><a href="{% url 'index' %}">Home</a><br /></p>
     </body>
-</html> 
+</html>

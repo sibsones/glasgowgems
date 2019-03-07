@@ -1,36 +1,27 @@
 from django import forms
 from gems.models import Gem, Category
 
-
-class CategoryForm(forms.ModelForm):
-    name = forms.CharField(max_length=128, help_text="Please enter category name: ")
-    views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-
-    class Meta:
-        model = Category
-        fields = ('name',)
-
 class GemForm(forms.ModelForm):
-    title = forms.CharField(max_length=128,help_text="Please enter title of Gem: ")
-    url = forms.URLField(max_length=200,help_text="Please enter url of Gem: ") #Not sure if we'll use this - Luis
-    views = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
-
-    def clean(self):
-        #Adding http to url's of Gems - Luis
-        cleaned_data = self.cleaned_data
-        url = cleaned_data.get('url')
-
-        if url and not url.startswith('http://'):
-            url = 'http://' + url
-            cleaned_data['url'] = url
-
-            return cleaned_data
-
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), help_text="Category:")
+    
+    name = forms.CharField(max_length=99, help_text="Name:")
+    address = forms.CharField(max_length=99, help_text="Address:")
+    description = forms.CharField(max_length=200, help_text="Description:", widget=forms.Textarea(attrs={'cols': 50, 'rows': 5}))
+    
+    image = forms.ImageField(help_text="Upload image:")
+    image_source = forms.CharField(max_length=99, help_text="Image source:")
+    
+    # fields that users do not populate
+    # initial or required parameter needed, otherwise form.is_valid() returns False
+    likes = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+    reported = forms.BooleanField(widget=forms.HiddenInput(), required=False)
+    
+    #added_by = implement after user authentication
+    added_on = forms.DateTimeField(widget=forms.HiddenInput(), required=False)
+    
+    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    
     class Meta:
         model = Gem
-        #Can exclude certain fields - Luis
-        exclude = ('category',)
-        #Or specify fields to include, .i.e. - Luis
-        #Fields = ('title','url','views')
+        # using fields specifies the display order
+        fields = ('name', 'address', 'category', 'image', 'image_source', 'description')

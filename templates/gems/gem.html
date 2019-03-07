@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% if gem %}
+            <title>Glasgow Gems - {{ gem.name }}</title>
+        {% else %}
+            <title>Glasgow Gems - No such gem</title>
+        {% endif %}
+    </head>
+
+    <body>
+    <div>
+    {% if gem %}
+        <h1>{{ gem.name }}</h1>
+        <p>Category: <a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></p>
+        <p>Address: {{ gem.address }}</p>
+        <p>Description:<br>{{ gem.description }}</p>
+        <p><img src="{{ MEDIA_URL }}{{ gem.image }}" alt="{{ gem.name }}"/></p>
+        <p>Source: {{ gem.image_source }}</p>
+        <p>MAP PLACEHOLDER</p>
+        <p>{{ gem.likes }} people like this Gem</p>
+        
+        <div>
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            {{ comment.added_by }}: {{ comment.text }}<br>
+        {% endfor %}
+        </div>
+    {% else %}
+        The specified gem does not exist!
+    {% endif %}
+    </div>
+
+    <p><a href="{% url 'index' %}">Home</a><br /></p>
+
+</body>
+</html>
