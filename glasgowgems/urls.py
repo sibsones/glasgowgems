@@ -28,11 +28,13 @@ urlpatterns = [
 	url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
 		views.show_category, name='show_category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/(?P<gem_name_slug>[\w\-]+)/$',
-        views.show_gem, name='show_gem')
+        views.show_gem, name='show_gem'),
+    url(r'^sign_up/$',views.sign_up,name="sign_up"),
+    url(r'^login/$', views.log_in, name='login'),
+    url(r'^logout/$', views.user_logout, name='logout'),
      #==========================================================================
      # FUTURE ADDS
      # url(r'^profile/$', views.profile, name='profile'),
-     # url(r'^log-in/$', views.log_in, name='log_in'),
      # url(r'^sign-up/$', views.sign_up, name='sign_up'),
      # url(r'^search-results/$', views.search_results, name='search_results')
      #==========================================================================

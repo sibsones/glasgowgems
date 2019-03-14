@@ -1,5 +1,6 @@
 from django import forms
-from gems.models import Gem, Category
+from gems.models import Gem, Category, UserProfile
+from django.contrib.auth.models import User
 
 class GemForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(), help_text="Category:")
@@ -25,3 +26,15 @@ class GemForm(forms.ModelForm):
         model = Gem
         # using fields specifies the display order
         fields = ('name', 'address', 'category', 'image', 'image_source', 'description')
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username','email','password')
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('profile_image')
