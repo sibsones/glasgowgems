@@ -65,8 +65,8 @@
             
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search architecture" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -80,9 +80,7 @@
     <hr />
 
     <div id="footer">
-        <ul>
-            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-        </ul>
+		<a href="{% url 'contact_us' %}">Contact Us</a></li>
     </div>
 </body>
 </html>

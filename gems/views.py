@@ -5,6 +5,7 @@ from gems.forms import GemForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 def index(request):
     category_list = Category.objects.all()
@@ -153,3 +154,10 @@ def restricted(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+	
+def search_results(request):
+	search_results = []
+	query = request.GET.get("q")
+	if query:
+		search_results = Gem.objects.filter(Q(name__icontains=query))
+	return render(request, 'gems/search_results.html', {'search_results': search_results, 'search' : query})

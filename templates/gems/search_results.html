@@ -1,0 +1,21 @@
+{% extends 'gems/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Search Results
+{% endblock %}
+
+{% block body_block %}
+	<div>
+        {% if search_results %}
+		Showing {{ search_results|length }} results for "{{ search }}:"
+        <ul>
+            {% for gem in search_results %}
+                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>No search results.</strong>
+        {% endif %}
+    </div>
+{% endblock %}}

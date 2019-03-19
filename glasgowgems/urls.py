@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^sign_up/$',views.sign_up,name="sign_up"),
     url(r'^login/$', views.log_in, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
+	url(r'^search-results/$', views.search_results, name='search_results'),
      #==========================================================================
      # FUTURE ADDS
      # url(r'^profile/$', views.profile, name='profile'),
