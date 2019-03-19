@@ -1,32 +1,29 @@
-<!DOCTYPE html>
+{% extends 'gems/base.html' %}
+{% load staticfiles %}
 
-<html>
+{% block title_block %}
+    Add a Gem
+{% endblock %}
 
-    <head>
-        <title>Glasgow Gems - Add a Gem</title>
-    </head>
-
-    <body>
-        <h1>Add a new Gem!</h1>
-        <div>
-            <form id="gem_form" enctype="multipart/form-data" method="post" action="{% url 'add_gem' %}">
-                {% csrf_token %}
-                {% for hidden in form.hidden_fields %}
-                    {{ hidden }}
-                    <!-- helps to debug form validation, just for reference, delete later
-                    {% if hidden.errors %}
-                        {{ hidden.errors }}
-                        {{ hidden.name }}
-                    {% endif %} -->
-                {% endfor %}
-                {% for field in form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text }}
-                    {{ field }}<br>
-                {% endfor %}
-                <input type="submit" name="submit" value="Add Gem" />
-            </form>
-        </div>
-        <p><a href="{% url 'index' %}">Home</a><br /></p>
-    </body>
-</html>
+{% block body_block %}
+    <h1>Add a new Gem!</h1>
+    <div>
+        <form id="gem_form" enctype="multipart/form-data" method="post" action="{% url 'add_gem' %}">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+                <!-- helps to debug form validation, just for reference, delete later
+                {% if hidden.errors %}
+                    {{ hidden.errors }}
+                    {{ hidden.name }}
+                {% endif %} -->
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}<br>
+            {% endfor %}
+            <input type="submit" name="submit" value="Add Gem" />
+        </form>
+    </div>
+{% endblock %}

@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-
+{% extends 'gems/base.html' %}
 {% load staticfiles %}
 
-<html>
-    <head>
-        <title>Glasgow Gems - Contact us</title>
-    </head>
+{% block title_block %}
+    Contact Us!
+{% endblock %}
 
-    <body>
-        <h1>Contact us</h1>
-        <div>
-            <strong>{{ boldmessage }}</strong>
-        </div>
-        <div>
-            <a href="{% url 'index' %}">Home</a><br />
-            <img src="{{ MEDIA_URL }}glasgow_uni.jpeg"/>
-        </div>
-    </body>
-</html>
+{% block body_block %}
+    <h1>Contact us</h1>
+    <div>
+        <strong>{{ boldmessage }}</strong>
+    </div>
+    <div>
+        <a href="{% url 'index' %}">Home</a><br />
+        <img src="{{ MEDIA_URL }}glasgow_uni.jpeg"/>
+    </div>
+{% endblock %}}
+

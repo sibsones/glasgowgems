@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-
+{% extends 'gems/base.html' %}
 {% load staticfiles %}
 
-<html>
-    <head>
-        <title>Glasgow Gems - Home</title>
-    </head>
+{% block title_block %}
+    Home
+{% endblock %}
 
-    <body>
-        <h1>Glasgow Gems</h1>
-        <div>
-            Sharing Glasgow's architectural gems<br/>
-        </div>
-        
-        <div>
-            <a href="{% url 'add_gem' %}">Add a Gem</a> <br/>
-        </div>
-        
-        <div>
-        <h2> Categories to be changed into a dropdown </h2>
+{% block body_block %}
+    <!--
+    <h2>Categories</h2>
+    <div>
         {% if categories %}
         <ul>
             {% for category in categories %}
@@ -28,38 +18,28 @@
         {% else %}
             There are no categories present.
         {% endif %}
-        </div>
-        
-        
-        <div>
-        <h2>Most Liked Gems</h2>
-        {% if most_liked_gems %}
+    </div>
+    -->
+
+    <h2>Most Liked Gems</h2>
+    {% if most_liked_gems %}
         <ul>
             {% for gem in most_liked_gems %}
                 <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
             {% endfor %}
         </ul>
-        {% else %}
-            <strong>No gems currently in index.</strong>
-        {% endif %}
-        </div>
-        
-        <div>
-        <h2>Most Recent Gems</h2>
-        {% if most_recent_gems %}
+    {% else %}
+        <strong>No gems currently in index.</strong>
+    {% endif %}
+
+    <h2>Most Recent Gems</h2>
+    {% if most_recent_gems %}
         <ul>
             {% for gem in most_recent_gems %}
                 <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
             {% endfor %}
         </ul>
-        {% else %}
-            <strong>No gems currently in index.</strong>
-        {% endif %}
-        </div>
-
-        <div>
-            <a href="{% url 'contact_us' %}">Contact us</a><br />
-            <img src="{% static "images/necropolis_landscape.jpg" %}" alt="Necropolis Landscape"/>
-        </div>
-    </body>
-</html>
+    {% else %}
+        <strong>No gems currently in index.</strong>
+    {% endif %}
+{% endblock %}

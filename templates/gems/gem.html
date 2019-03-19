@@ -1,38 +1,31 @@
-<!DOCTYPE html>
+{% extends 'gems/base.html' %}
+{% load staticfiles %}
 
-<html>
-    <head>
-        {% if gem %}
-            <title>Glasgow Gems - {{ gem.name }}</title>
-        {% else %}
-            <title>Glasgow Gems - No such gem</title>
-        {% endif %}
-    </head>
+{% block title_block %}
+    {{ gem.name }}
+{% endblock %}
 
-    <body>
-    <div>
+{% block body_block %}
     {% if gem %}
-        <h1>{{ gem.name }}</h1>
-        <p>Category: <a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></p>
-        <p>Address: {{ gem.address }}</p>
-        <p>Description:<br>{{ gem.description }}</p>
-        <p><img src="{{ MEDIA_URL }}{{ gem.image }}" alt="{{ gem.name }}"/></p>
-        <p>Source: {{ gem.image_source }}</p>
-        <p>MAP PLACEHOLDER</p>
-        <p>{{ gem.likes }} people like this Gem</p>
-        
-        <div>
-        <h3>Comments</h3>
-        {% for comment in comments %}
-            {{ comment.added_by }}: {{ comment.text }}<br>
-        {% endfor %}
+
+        <div id="gem_image">
+            <img src="{{ MEDIA_URL }}{{ gem.image }}" alt="{{ gem.name }}"/>
+            <p>Source: {{ gem.image_source }}</p>
+        </div>
+
+        <ul>
+            <li>Category:<a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></li>
+            <li>Address: {{ gem.address }}</li>
+            <li>Description:<br>{{ gem.description }}</li>
+         </ul>
+
+        <div id="comments">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+                {{ comment.added_by }}: {{ comment.text }}<br>
+            {% endfor %}
         </div>
     {% else %}
-        The specified gem does not exist!
+        The specified gem does not exist! 
     {% endif %}
-    </div>
-
-    <p><a href="{% url 'index' %}">Home</a><br /></p>
-
-</body>
-</html>
+{% endblock %}

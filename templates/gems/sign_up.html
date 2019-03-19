@@ -1,0 +1,28 @@
+{% extends 'gems/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Sign Up!
+{% endblock %}
+
+{% block body_block %}
+    <h1>Register for Glasgow Gems</h1>
+    {% if registered %}
+        <strong>Thanks for registering!</strong>
+        <a href="{% url 'index' %}">Return to the homepage.</a><br />
+    {% else %}
+        <strong>Register here!</strong>
+        <form id="user_form" method="post" action="{% url 'sign_up' %}"
+            16 enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <!-- Display Forms -->
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <input type="submit" name="submit" value="Register" />
+
+        </form>
+    {% endif %}
+{% endblock %}
