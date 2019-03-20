@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Sign Up!
+    Sign Up
 {% endblock %}
 
 {% block body_block %}
@@ -11,9 +11,7 @@
         <strong>Thanks for registering!</strong>
         <a href="{% url 'index' %}">Return to the homepage.</a><br />
     {% else %}
-        <strong>Register here!</strong>
-        <form id="user_form" method="post" action="{% url 'sign_up' %}"
-            16 enctype="multipart/form-data">
+        <form id="user_form" method="post" action="{% url 'sign_up' %}" 16 enctype="multipart/form-data">
 
         {% csrf_token %}
 

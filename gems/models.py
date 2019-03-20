@@ -31,8 +31,10 @@ class Gem(models.Model):
 	likes = models.IntegerField(default=0)
 	reported = models.BooleanField(default=False)
 	
-	added_by = models.ForeignKey(User, default=1) ### default=1 for now (1 should be the superuser PK)
-	added_on = models.DateTimeField(auto_now_add=True) ### check later if auto_now_add works correctly
+	### default=1 should be the superuser PK, changed correctly when adding a gem
+	added_by = models.ForeignKey(User, default=1)
+	### auto_now_add works correctly, auto assigns date and time when adding a gem
+	added_on = models.DateTimeField(auto_now_add=True)
 	
 	slug = models.SlugField(unique=True)
 	

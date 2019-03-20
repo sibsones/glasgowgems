@@ -29,14 +29,9 @@ urlpatterns = [
 		views.show_category, name='show_category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/(?P<gem_name_slug>[\w\-]+)/$',
         views.show_gem, name='show_gem'),
-    url(r'^sign_up/$',views.sign_up,name="sign_up"),
+    url(r'^sign-up/$', views.sign_up,name="sign_up"),
     url(r'^login/$', views.log_in, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^search-results/$', views.search_results, name='search_results'),
-     #==========================================================================
-     # FUTURE ADDS
-     # url(r'^profile/$', views.profile, name='profile'),
-     # url(r'^sign-up/$', views.sign_up, name='sign_up'),
-     # url(r'^search-results/$', views.search_results, name='search_results')
-     #==========================================================================
+    url(r'^profile/$', views.profile, name='profile'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

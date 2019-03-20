@@ -66,3 +66,17 @@ h1 {
 	color: white;
 	
 }
+
+.clearUL ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.navbar-default {
+    background-color: #9FAFCE; /* alternatives? #8aa5d8 #91b0ea */
+    border-color: #9FAFCE;
+}
+
+.alert {
+    width: 23%;
+}

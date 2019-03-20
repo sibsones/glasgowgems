@@ -17,7 +17,7 @@ class GemForm(forms.ModelForm):
     likes = forms.IntegerField(widget=forms.HiddenInput(), required=False)
     reported = forms.BooleanField(widget=forms.HiddenInput(), required=False)
     
-    #added_by = implement after user authentication
+    #added_by changed in add_gem view after the form is submitted
     added_on = forms.DateTimeField(widget=forms.HiddenInput(), required=False)
     
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
