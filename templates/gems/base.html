@@ -5,12 +5,14 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        
+       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'base_style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'queries.css' %}">
+       
 
         <title>
             Glasgow Gems - 
@@ -21,72 +23,82 @@
 
     <body>
         <header>
-            <h1>Glasgow Gems</h1>
-            <img src="{% static 'images/logo.png' %}" alt="Glasgow Gems Logo"/>
-            
-            <div class="clearUL">
-                <ul>
-                    {% if user.is_authenticated %}
-                        <li>Logged in as: {{ user.username }}</li>
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}">Log In</a></li>
-                        <li>Or</li>
-                        <li><a href="{% url 'sign_up' %}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
+            <div class="header">
+                <div class="header-left">
+                    <h1>Glasgow Gems
+                    <img src="{% static 'images/logo.png' %}" alt="Glasgow Gems Logo"/>
+                    </h1>
+                </div>
+                <div class="header-right">
+                    <div class="clearUL">
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <li>Logged in as: {{ user.username }}</li>
+                                <li class="align"><a href="{% url 'profile' %}">Profile</a></li>
+                                <li class="align"> - </li>
+                                <li class="align"><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li class="align"><a href="{% url 'login' %}">Log In</a></li>
+                                <li class="align">Or</li>
+                                <li class="align"><a href="{% url 'sign_up' %}">Sign Up</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </header>
             
         <!--To expand dropdown-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
-        <nav class="navbar navbar-expand-lg navbar-light navbar-default"> <!-- navbar-default from our CSS --> <!-- DEFAULT COLOURS <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> -->
-            <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light navbar-default"> <!-- navbar-default from our CSS --> <!-- DEFAULT COLOURS <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> -->
+                <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories<span class="sr-only">(current)</span></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% if categories %}
+                            {% for category in categories %}
+                            <a class="dropdown-item" href="{% url 'show_category' category.slug %}">{{ category.name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            There are no categories present.
+                        {% endif %}
+                        </div>
+                    </li>
                     
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories<span class="sr-only">(current)</span></a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% if categories %}
-                        {% for category in categories %}
-                        <a class="dropdown-item" href="{% url 'show_category' category.slug %}">{{ category.name }}</a>
-                        {% endfor %}
-                    {% else %}
-                        There are no categories present.
-                    {% endif %}
-                    </div>
-                </li>
-                
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled - just to demonstrate</a>
-                </li>
-                -->
-                
-                <li class="nav-item">
-                    {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'add_gem' %}">Add a Gem<span class="sr-only">(current)</span></a>
-                    {% else %}
-                        <a class="nav-link" href="{% url 'login' %}">Log In to Add a Gem<span class="sr-only">(current)</span></a>
-                    {% endif %}
-                </li>
-                
-                </ul>
-                
-                <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
-                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-        </header>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled - just to demonstrate</a>
+                    </li>
+                    -->
+                    
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'add_gem' %}">Add a Gem<span class="sr-only">(current)</span></a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'login' %}">Log In to Add a Gem<span class="sr-only">(current)</span></a>
+                        {% endif %}
+                    </li>
+                    
+                    </ul>
+                    
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        
 
         <div>
             {% block body_block %}

@@ -11,14 +11,14 @@
 
 {% block body_block %}
     {% if gem %}
-        
+        <br>
         <h2>{{ gem.name }}</h2>
-
+        <br>
         <div id="gem_image">
             <img src="{{ MEDIA_URL }}{{ gem.image }}" alt="{{ gem.name }}"/>
             <p>Source: {{ gem.image_source }}</p>
         </div>
-        
+            
         <div class="clearUL">
         <ul>
             <li>Category: <a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></li>
@@ -33,6 +33,7 @@
             {% for comment in comments %}
                 {{ comment.added_by }}: {{ comment.text }}<br>
             {% endfor %}
+        </div>
         </div>
     {% else %}
         The specified gem does not exist! 

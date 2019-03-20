@@ -6,40 +6,40 @@
 {% endblock %}
 
 {% block body_block %}
-    <!--
-    <h2>Categories</h2>
-    <div>
-        {% if categories %}
-        <ul>
-            {% for category in categories %}
-                <li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
-        {% else %}
-            There are no categories present.
-        {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Most Liked Gems</h2>
+                {% if most_liked_gems %}
+                    <ul>
+                        {% for gem in most_liked_gems %}
+                            <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>No gems currently in index.</strong>
+                {% endif %}
+            </div>
+
+            <div class="col">
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <h2>Most Recent Gems</h2>
+                {% if most_recent_gems %}
+                    <ul>
+                        {% for gem in most_recent_gems %}
+                            <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>No gems currently in index.</strong>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    -->
-
-    <h2>Most Liked Gems</h2>
-    {% if most_liked_gems %}
-        <ul>
-            {% for gem in most_liked_gems %}
-                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <strong>No gems currently in index.</strong>
-    {% endif %}
-
-    <h2>Most Recent Gems</h2>
-    {% if most_recent_gems %}
-        <ul>
-            {% for gem in most_recent_gems %}
-                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <strong>No gems currently in index.</strong>
-    {% endif %}
 {% endblock %}
