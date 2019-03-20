@@ -18,16 +18,18 @@ def index(request):
 
 def contact_us(request):
     category_list = Category.objects.all()
-    context_dict = {'categories': category_list, 'boldmessage':"Contact us page!"}
+    info = "Please send us an email to adminteam@glasgowgems.com " \
+           "and we will be back in touch as soon as possible."
+    context_dict = {'categories': category_list,'boldmessage': info}
     return render(request, 'gems/contact_us.html', context_dict)
     
 def show_category(request, category_name_slug):
     context_dict = {}
+    category_list = Category.objects.all()
+    context_dict['categories'] = category_list
     try:
-        category_list = Category.objects.all()
         category = Category.objects.get(slug=category_name_slug)
         gems = Gem.objects.filter(category=category)
-        context_dict['categories'] = category_list
         context_dict['gems'] = gems
         context_dict['category'] = category
     except Category.DoesNotExist:
@@ -37,11 +39,11 @@ def show_category(request, category_name_slug):
 
 def show_gem(request, category_name_slug, gem_name_slug):
     context_dict = {}
+    category_list = Category.objects.all()
+    context_dict['categories'] = category_list
     try:
-        category_list = Category.objects.all()
         gem = Gem.objects.get(slug=gem_name_slug)
         comments = Comment.objects.filter(gem=gem)
-        context_dict['categories'] = category_list
         context_dict['gem'] = gem
         context_dict['comments'] = comments
     except Gem.DoesNotExist:
