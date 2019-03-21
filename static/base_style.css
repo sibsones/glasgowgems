@@ -27,6 +27,11 @@ h2 {
 
 .container {
 	width: 100%;
+	justify-content: center;
+}
+
+img { 
+	image-rendering: -webkit-optimize-contrast;
 }
 
 /* ----------------------------------------------- */
@@ -53,6 +58,7 @@ header {
 	background-color: #D6D3C8;
 	color: black;
 	font-size: 30px;
+	padding-bottom:30px;
 }
 
 .header-left {
@@ -193,6 +199,8 @@ nav {
 .gem_image {
 	max-width: 50%;
 	max-height: 50%;
+	width:auto;
+	height:auto;
 }
 
 .gem_info {
@@ -235,17 +243,34 @@ nav {
 
 .log_in {
 	margin: 0 auto;
-	width:250px;
+	width:30%;
 }
 
 .log_in p {
 	text-align:center;
 }
 
-.log_in {
-
+.log_in_button {
+	display: flex; 
+	justify-content: center;
 }
 
+input[type=submit] {
+
+	background-color:#9FAFCE;
+	color:black;
+	padding: 10px 20px;
+	
+}
+
+/* ----------------------------------------------- */
+/* SIGN_UP */
+/* ----------------------------------------------- */
+
+.sign_up_form {
+	margin: 0 auto;
+	width:40%;
+}
 
 /* ----------------------------------------------- */
 /* FOOTER */

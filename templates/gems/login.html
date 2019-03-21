@@ -6,16 +6,21 @@
 {% endblock %}
 
 {% block body_block %}
+    <br /><br />
     <div class="log_in">
         <br />
-       
         <form id="login_form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="25" />
+            <p>Username: <input type="text" name="username" value="" size="25" />
+
             <br /><br />
-            Password: <input type="password" name="password" value="" size="25" />
+            <p>Password: <input type="password" name="password" value="" size="25" /></p>
+            <br /><br />
+
+            <div class="log_in_button">
+                <input type="submit" value="Enter" />
+            </div>
             <br />
-            <input type="submit" value="Enter" />
         </form>
         {% for message in messages %}
             <div class="alert alert-danger">
@@ -27,7 +32,9 @@
         <br />
         <p>Don't have an account?</p>
         <form action="{% url 'sign_up' %}">
-            <input type="submit" value="Sign Up" />
+            <div class="log_in_button">
+                <input type="submit" value="Sign Up" />
+            </div>
         </form>
     </div>
     

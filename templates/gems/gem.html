@@ -14,14 +14,14 @@
         <br/><h2>{{ gem.name }}</h2><br/>
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8" style = 'background-color: yellow;'>
                     <div class="gem_image">
                         <img src="{{ MEDIA_URL }}{{ gem.image }}" alt="{{ gem.name }}"/>
                         <p>Source: {{ gem.image_source }}</p>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" style = 'background-color: green;'>
                     <div class="gem_info">
                         <ul>
                             <li>Category: <a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></li>

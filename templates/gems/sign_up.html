@@ -6,21 +6,23 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Register for Glasgow Gems</h1>
+    <br/><h2>Register for Glasgow Gems</h2><br/>
     {% if registered %}
         <strong>Thanks for registering!</strong>
         <a href="{% url 'index' %}">Return to the homepage.</a><br />
     {% else %}
-        <form id="user_form" method="post" action="{% url 'sign_up' %}" 16 enctype="multipart/form-data">
+        <div class="sign_up_form">
+            <form id="user_form" method="post" action="{% url 'sign_up' %}" 16 enctype="multipart/form-data">
 
-        {% csrf_token %}
+            {% csrf_token %}
 
-        <!-- Display Forms -->
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
+            <!-- Display Forms -->
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
 
-        <input type="submit" name="submit" value="Register" />
+            <input type="submit" name="submit" value="Register" />
 
-        </form>
+            </form>
+        </div>
     {% endif %}
 {% endblock %}
