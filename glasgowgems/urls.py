@@ -35,4 +35,5 @@ urlpatterns = [
 	url(r'^search-results/$', views.search_results, name='search_results'),
     url(r'^profile/$', views.profile, name='profile'),
 	url(r'^like/$', views.like_gem, name='like_gem'),
+    url(r'^create_comment/$', views.create_comment, name='create_comment'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

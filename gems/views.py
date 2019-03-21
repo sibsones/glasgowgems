@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     category_list = Category.objects.all()
@@ -185,7 +186,6 @@ def log_in(request):
         return render(request, 'gems/login.html', {'categories': category_list})
 
 def like_gem(request):
-    print(request)
     gem_id = None
     if request.method == 'GET':
         gem_id = request.GET['gem_id']
@@ -198,6 +198,18 @@ def like_gem(request):
             gem.save()
     return HttpResponse(likes)
 	
+@csrf_exempt
+def create_comment(request):
+    gem_id = None
+    if request.method == 'POST':
+        gem_id = request.POST['gem_id']
+        if gem_id:
+            gem = Gem.objects.get(id=int(gem_id))
+            comment_text = request.POST.get('comment_text')
+            comment = Comment.objects.create(gem = gem, text=comment_text, added_by = request.user)
+            comment.save() 
+    return redirect('show_gem',gem.category.slug,gem.slug)
+    
 @login_required
 def user_logout(request):
     logout(request)

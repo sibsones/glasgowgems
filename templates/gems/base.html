@@ -9,6 +9,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'base_style.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'queries.css' %}">
        
@@ -20,6 +21,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{% static 'js/glasgowgems-jquery.js' %}"></script>
         <script src="{% static 'js/glasgowgems-ajax.js' %}"></script>
+        
+        <!--modal-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        
         <!--contact us popup-->
         <script src="{% static 'js/contact-us-popup.js' %}"></script>
         
@@ -28,6 +33,8 @@
         <!-- Make sure to put this AFTER Leaflet's CSS -->
         <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
 
+
+        
         <title>
             Glasgow Gems - 
             {% block title_block %}

@@ -31,7 +31,9 @@
                         </ul>
                     </div>
                     <div>
-                        <button id ="likes" data-gemid="{{gem.id}}" class="btn btn-primary btn-sm" type="button">Like</button>
+                        {% if user.is_authenticated %}
+                            <button id ="likes" data-gemid="{{gem.id}}" class="btn btn-primary btn-sm" type="button">Like</button>
+                        {% endif %}
                         <strong id="like_count">{{ gem.likes }}</strong> people like this gem.
                     </div>
                 </div>
@@ -52,17 +54,39 @@
                 </div>
 
                 <div class="col-md-6">
+                    <h3>Comments</h3>
                     <div class="comments">
-                        <h3>Comments</h3>
                         {% for comment in comments %}
                             {{ comment.added_by }}: {{ comment.text }}<br>
                         {% endfor %}
                     </div>
+                {% if user.is_authenticated %}
+                    <div class="container">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" data-gemid="{{gem.id}}"  class="btn btn-primary btn-lg" id="comments">Add a comment</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-body" style="padding:40px 50px;">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <input type="text"  class="form-control" id="comment" placeholder="Enter comment">
+                                            </div>
+                                                <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-off"></span> Submit</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                {% endif %}
                 </div>
-                
             </div>
-
-            
         </div>
 
     {% else %}
