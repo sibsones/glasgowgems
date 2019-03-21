@@ -3,13 +3,16 @@
 /* BASIC SETUP */
 /* ----------------------------------------------- */
 
-html,
+html {
+	background-color: #D6D3C8;
+	font-family:'Source Sans Pro';
+	margin: 0;
+}
+
 body {
 	background-color: #D6D3C8;
-	font-family: Helvetica, Arial, sans-serif;
-	margin: 0;#
-
 }
+
 
 /* ----------------------------------------------- */
 /* REUSABLE COMPONENTS */
@@ -31,7 +34,7 @@ h2 {
 }
 
 img { 
-	image-rendering: -webkit-optimize-contrast;
+	width:100%;
 }
 
 /* ----------------------------------------------- */
@@ -39,6 +42,7 @@ img {
 /* ----------------------------------------------- */
 
 h1 {
+	font-family:'Anton';
 	margin: 0;
 	height: 60px;
 	color: #6A768E;
@@ -59,6 +63,10 @@ header {
 	color: black;
 	font-size: 30px;
 	padding-bottom:30px;
+}
+
+.header_img {
+	width:15%;
 }
 
 .header-left {
@@ -126,16 +134,6 @@ nav {
 /* INDEX */
 /* ----------------------------------------------- */
 
-.container-index {
-	display:grid;
-	grid-template-columns: 33.333% 33.333% 33.333%;
-	
-}
-
-.container-index .col {
-	position: relative;
-}
-
 .most_liked {
 	background-color: #9FAFCE;
 	margin: 10px;
@@ -156,6 +154,14 @@ nav {
 	background-color: #9FAFCE;
 	margin: 10px;
 	box-shadow: 0 0 5px #333;
+}
+
+.search_container_index {
+	text-align:center;
+}
+
+.col_search {
+	display:inline-block;
 }
 
 /* ----------------------------------------------- */
@@ -196,13 +202,6 @@ nav {
 /* GEMS */
 /* ----------------------------------------------- */
 
-.gem_image {
-	max-width: 50%;
-	max-height: 50%;
-	width:auto;
-	height:auto;
-}
-
 .gem_info {
 	background-color: #9FAFCE;
 	margin: 10px;
@@ -242,8 +241,8 @@ nav {
 /* ----------------------------------------------- */
 
 #mapid {
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 300px;
 }
 
 /* ----------------------------------------------- */
