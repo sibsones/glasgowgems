@@ -8,8 +8,7 @@
 {% block body_block %}
     <br/><h2>Register for Glasgow Gems</h2><br/>
     {% if registered %}
-        <strong>Thanks for registering!</strong>
-        <a href="{% url 'index' %}">Return to the homepage.</a><br />
+        <strong>Thanks for registering! You can now log in.</strong>
     {% else %}
         <div class="sign_up_form">
             <form id="user_form" method="post" action="{% url 'sign_up' %}" 16 enctype="multipart/form-data">

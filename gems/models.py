@@ -28,6 +28,9 @@ class Gem(models.Model):
 	image = models.ImageField(upload_to="gems_images")
 	image_source = models.CharField(max_length=99)
 	
+	latitude = models.DecimalField(max_digits=22, decimal_places=16, default=-1000)
+	longitude = models.DecimalField(max_digits=22, decimal_places=16, default=-1000)
+	
 	likes = models.IntegerField(default=0)
 	reported = models.BooleanField(default=False)
 	
@@ -64,20 +67,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-#===============================================================================
-# FOR INFO - DELETE LATER
-
-# Incorrect, User is created automatically by django, just need to link UserProfile to it (at least for now)
-# Also, some fields are automatic for User (e.g. username, password, email) so no need to create them explicitly
-# 
-# user model
-# class User(models.Model):
-# 	username = models.CharField(max_length=30, unique=True, blank=False)
-# 	password = models.CharField(max_length=30)
-# 	emailAddress = models.EmailField(max_length=30)
-# 	profileImage = models.ImageField(upload_to="profile_images/")
-# 	
-# 	def __str__(self):
-# 		return self.name
-#===============================================================================

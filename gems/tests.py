@@ -1,11 +1,11 @@
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.conf import settings
 from gems.models import Category, Gem, User, UserProfile
 from gems.forms import UserForm, UserProfileForm, GemForm
-from django.core.urlresolvers import reverse
 import gems.test_utils as test_utils
-from django.core.files.uploadedfile import SimpleUploadedFile
-import os
-from django.conf import settings
+import os, datetime
 
 # 
 class CategoryMethodTests(TestCase):
@@ -34,6 +34,55 @@ class GemMethodTests(TestCase):
         self.assertEqual(gem.slug, 'test-gem-name-with-many-words')
 
 # 
+class CategoryModelTests(TestCase):
+    def test_adding_category_works(self):
+        # Create a test category
+        category = Category(name="Category 1", description="Description 1")
+        category.save()
+        
+        #Check there is only one category
+        categories = Category.objects.all()
+        self.assertEquals(len(categories), 1)
+
+        #Check fields were saved correctly
+        self.assertEquals(categories[0].name, "Category 1")
+        self.assertEquals(categories[0].description, "Description 1")
+        self.assertEquals(categories[0].slug, "category-1")
+
+# 
+class GemModelTests(TestCase):
+    def test_adding_gem_works(self):
+        # Create a user
+        user, user_profile = test_utils.create_user()
+        
+        # Create a test category
+        category = Category(name="Category 1")
+        category.save()
+        
+        # Create a test gem
+        gem = Gem(category=category, name="Gem 1", address="Address 1",
+                  description="Description 1", image_source="Image source 1")
+        gem.save()
+        
+        #Check there is only one gem
+        gems = Gem.objects.all()
+        self.assertEquals(len(gems), 1)
+        
+        #Check fields were saved correctly
+        self.assertEquals(str(gem.category), "Category 1")
+        self.assertEquals(gem.name, "Gem 1")
+        self.assertEquals(gem.address, "Address 1")
+        self.assertEquals(gem.description, "Description 1")
+        self.assertFalse(gem.image) # make more robust
+        self.assertEquals(gem.image_source, "Image source 1")
+        self.assertEquals(gem.likes, 0)
+        self.assertEquals(gem.reported, False)
+        self.assertEquals(gem.added_by, user)
+        self.assertNotEquals(gem.added_on, None)
+        self.assertTrue(isinstance(gem.added_on, datetime.datetime))
+        self.assertEquals(gem.slug, "gem-1")
+
+# 
 class UserModelTests(TestCase):
     def test_user_profile_model(self):
         # Create a user
@@ -49,31 +98,6 @@ class UserModelTests(TestCase):
         # Check profile fields were saved correctly
         all_profiles[0].user = user
         all_profiles[0].profile_image = user_profile.profile_image
-
-# 
-class CategoryModelTests(TestCase):
-    def test_adding_category_works(self):
-        # Create a test category
-        category = Category(name="Category 1", description="Description 1")
-        category.save()
-        
-        #Check slug was generated
-        self.assertEquals(category.slug, "category-1")
-
-        #Check there is only one category
-        categories = Category.objects.all()
-        self.assertEquals(len(categories), 1)
-
-        #Check attributes were saved correctly
-        categories[0].name = "Category 1"
-        categories[0].description = "Description 1"
-        categories[0].slug = category.slug
-
-# 
-class GemModelTests(TestCase):
-    def test_adding_gem_works(self):
-        # CONTINUE HERE
-        pass
 
 # 
 class IndexViewTests(TestCase):
@@ -278,8 +302,7 @@ class UserAuthViewTests(TestCase):
                 return False
 
         # Check user was successfully registered
-        # CHANGE MESSAGES TO SOMETHING MORE SENSIBLE
-        self.assertIn('Thanks for registering!'.lower(),
+        self.assertIn('Thanks for registering! You can now log in.'.lower(),
                       response.content.decode('ascii').lower())
         user = User.objects.get(username='testuser')
         user_profile = UserProfile.objects.get(user=user)

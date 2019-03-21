@@ -25,6 +25,12 @@
                     {{ field.help_text }}
                     {{ field }}<br>
                 {% endfor %}
+                
+                <div id="mapid">
+                    <script type="text/javascript" src="{% static 'js/map-showmap.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/map-addmarker.js' %}"></script>
+                </div>
+                
                 <input type="submit" name="submit" value="Add Gem" />
             </form>
         </div>

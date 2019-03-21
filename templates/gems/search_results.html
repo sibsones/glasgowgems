@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block body_block %}
-	<div class="search-results">
+    <div class="search-results">
         {% if search_results %}
         <br>
         <p>Showing {{ search_results|length }} results for "{{ search }}":</p>
-		
+        
         <ul>
             {% for gem in search_results %}
                 <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</li>

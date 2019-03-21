@@ -15,17 +15,19 @@
         <!--To expand dropdown-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		
-		<!--like button-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="{% static 'js/glasgowgems-jquery.js' %}"></script>
-		<script src="{% static 'js/glasgowgems-ajax.js' %}"></script>
+        
+        <!--like button-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'js/glasgowgems-jquery.js' %}"></script>
+        <script src="{% static 'js/glasgowgems-ajax.js' %}"></script>
+        <!--contact us popup-->
         <script src="{% static 'js/contact-us-popup.js' %}"></script>
+        
+        <!-- Leaflet css and js -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+        <!-- Make sure to put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
 
-<<<<<<< HEAD
-=======
-		
->>>>>>> dc9c571fd7411f3e4677d67d48e23bea19bba2dc
         <title>
             Glasgow Gems - 
             {% block title_block %}
@@ -59,19 +61,6 @@
                 </div>
             </div>
 
-            <!-- javascript for pop up 'contact us' button
-<<<<<<< HEAD
-=======
-            #move to static js file
->>>>>>> dc9c571fd7411f3e4677d67d48e23bea19bba2dc
-            <script>
-            // When the user clicks on div, open the popup
-            function myFunction() {
-              var popup = document.getElementById("myPopup");
-              popup.classList.toggle("show");
-            }
-            </script>
-            -->
 
         </header>
         

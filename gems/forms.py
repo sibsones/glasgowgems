@@ -12,6 +12,10 @@ class GemForm(forms.ModelForm):
     image = forms.ImageField(help_text="Upload image:")
     image_source = forms.CharField(max_length=99, help_text="Image source:")
     
+    # populated automatically from the map marker
+    latitude = forms.DecimalField(widget=forms.HiddenInput())
+    longitude = forms.DecimalField(widget=forms.HiddenInput())
+    
     # fields that users do not populate
     # initial or required parameter needed, otherwise form.is_valid() returns False
     likes = forms.IntegerField(widget=forms.HiddenInput(), required=False)
@@ -25,7 +29,8 @@ class GemForm(forms.ModelForm):
     class Meta:
         model = Gem
         # using fields specifies the display order
-        fields = ('name', 'address', 'category', 'image', 'image_source', 'description')
+        fields = ('name', 'address', 'category', 'image', 'image_source',
+                  'description', 'latitude', 'longitude')
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

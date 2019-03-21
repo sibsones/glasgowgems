@@ -39,16 +39,25 @@
 
             <div class="row">
                 <div class="col-lg-8">
-                    <p>Map Placeholder</p>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="comments">
-                        <h3>Comments</h3>
-                        {% for comment in comments %}
-                            {{ comment.added_by }}: {{ comment.text }}<br>
-                        {% endfor %}
+                    <div id="mapid">
+                        <!-- Variables for using template tags in the external scripts -->
+                        <script>
+                            var gemName = "{{ gem.name }}";
+                            var gemLatitude = {{ gem.latitude }}
+                            var gemLongitude = {{ gem.longitude }}
+                        </script>
+                        <script type="text/javascript" src="{% static 'js/map-showmap.js' %}"></script>
+                        <script type="text/javascript" src="{% static 'js/map-showmarker.js' %}"></script>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="comments">
+                    <h3>Comments</h3>
+                    {% for comment in comments %}
+                        {{ comment.added_by }}: {{ comment.text }}<br>
+                    {% endfor %}
                 </div>
             </div>
         </div>

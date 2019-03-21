@@ -2,7 +2,8 @@ from django.contrib import admin
 from gems.models import Category, Gem, UserProfile, Comment
 
 class GemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'address', 'description', 'image', 'image_source', 'likes', 'reported', 'added_by', 'added_on')
+    list_display = ('name', 'category', 'address', 'description', 'image', 'image_source',
+                    'latitude', 'longitude', 'likes', 'reported', 'added_by', 'added_on',)
     prepopulated_fields = {'slug':('name',)}
     list_filter = ['reported']
     ordering = ['name']
