@@ -210,6 +210,17 @@ def create_comment(request):
             comment.save() 
     return redirect('show_gem',gem.category.slug,gem.slug)
     
+def report(request):
+    gem_id = None
+    if request.method == 'GET':
+        gem_id = request.GET['gem_id']
+    if gem_id:
+        gem = Gem.objects.get(id=int(gem_id))
+        if gem:
+            gem.reported = True
+            gem.save()
+    return HttpResponse(likes)   
+    
 @login_required
 def user_logout(request):
     logout(request)

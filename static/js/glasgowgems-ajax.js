@@ -57,5 +57,13 @@ $(document).ready(function() {
         });
     });
     
+    $("#report").click( function(event) {
+        var gemid;
+	    gemid = $(this).attr("data-gemid");
+	    $.get('/report/', {gem_id: gemid}, function(data){
+	        $('#report').hide();
+	    });
+		alert("Thank you.");
+	});
 });
 

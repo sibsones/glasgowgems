@@ -36,4 +36,5 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
 	url(r'^like/$', views.like_gem, name='like_gem'),
     url(r'^create_comment/$', views.create_comment, name='create_comment'),
+    url(r'^report/$', views.report, name='report'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
