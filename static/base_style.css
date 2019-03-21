@@ -19,13 +19,13 @@ h2 {
 	text-align: center;
 }
 
-.row {
-	display:block;
+.container-fluid {
+	display:flex;
+	background-color: #D6D3C8;
+	width:50%;
 }
 
 .container {
-	display:grid;
-	background-color: #D6D3C8;
 	width: 100%;
 }
 
@@ -49,12 +49,9 @@ h1 {
 /* ----------------------------------------------- */
 
 header {
-	display:block;
-	height:12vh;
+	display:flex;
 	background-color: #D6D3C8;
 	color: black;
-	text-align: center;
-	padding: 20px 10px;
 	font-size: 30px;
 }
 
@@ -63,6 +60,7 @@ header {
 }
 
 .header-right {
+	justify-content: right;
 	float:right;
 }
 
@@ -88,6 +86,9 @@ header {
 /* NAVBAR */
 /* ----------------------------------------------- */
 
+nav {
+	display:inline-block;
+}
 #navbar {
 	background-color:#9FAFCE;
 }
@@ -151,6 +152,10 @@ header {
 	box-shadow: 0 0 5px #333;
 }
 
+/* ----------------------------------------------- */
+/* SEARCH */
+/* ----------------------------------------------- */
+
 .search {
 	margin: 10px;
 }
@@ -185,6 +190,30 @@ header {
 /* GEMS */
 /* ----------------------------------------------- */
 
+.gem_image {
+	max-width: 50%;
+	max-height: 50%;
+}
+
+.gem_info {
+	background-color: #9FAFCE;
+	margin: 10px;
+	box-shadow: 0 0 5px #333;
+	width:auto;
+	height:auto;
+}
+
+.gem_info li {
+	list-style: none;
+}
+
+.comments {
+	background-color: #9FAFCE;
+	margin: 10px;
+	box-shadow: 0 0 5px #333;
+	width:auto;
+	height:auto;
+}
 
 /* ----------------------------------------------- */
 /* ADD_GEM */

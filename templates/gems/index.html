@@ -6,42 +6,47 @@
 {% endblock %}
 
 {% block body_block %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col most_liked">
-                <h2>Most Liked Gems</h2>
-                {% if most_liked_gems %}
-                    <ul>
-                        {% for gem in most_liked_gems %}
-                            <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong>No gems currently in index.</strong>
-                {% endif %}
+            <div class="col-sm">
+                <div class="col most_liked">
+                    <h2>Most Liked Gems</h2>
+                    {% if most_liked_gems %}
+                        <ul>
+                            {% for gem in most_liked_gems %}
+                                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>No gems currently in index.</strong>
+                    {% endif %}
+                </div>
             </div>
-
-
-            <div class="search_container">
-                <div class="col search">
-                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
-                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+            
+            <div class="col-sm">
+                <div class="search_container">
+                    <div class="col search">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                            <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <div class="col most_recent">
-                <h2>Most Recent Gems</h2>
-                {% if most_recent_gems %}
-                    <ul>
-                        {% for gem in most_recent_gems %}
-                            <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong>No gems currently in index.</strong>
-                {% endif %}
+            <div class="col-sm">
+                <div class="col most_recent">
+                    <h2>Most Recent Gems</h2>
+                    {% if most_recent_gems %}
+                        <ul>
+                            {% for gem in most_recent_gems %}
+                                <li><a href="{% url 'show_gem' gem.category.slug gem.slug %}">{{ gem.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>No gems currently in index.</strong>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
