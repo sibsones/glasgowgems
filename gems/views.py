@@ -184,6 +184,20 @@ def log_in(request):
         category_list = Category.objects.all()
         return render(request, 'gems/login.html', {'categories': category_list})
 
+def like_gem(request):
+    print(request)
+    gem_id = None
+    if request.method == 'GET':
+        gem_id = request.GET['gem_id']
+    likes = 0
+    if gem_id:
+        gem = Gem.objects.get(id=int(gem_id))
+        if gem:
+            likes = gem.likes + 1
+            gem.likes = likes
+            gem.save()
+    return HttpResponse(likes)
+	
 @login_required
 def user_logout(request):
     logout(request)

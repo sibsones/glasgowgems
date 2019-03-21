@@ -24,7 +24,11 @@
             <li>Category: <a href="{% url 'show_category' gem.category.slug %}">{{ gem.category }}</a></li>
             <li>Address: {{ gem.address }}</li>
             <li>Description:<br>{{ gem.description }}</li>
-            <li>LIKE button placeholder {{ gem.likes }} people like this Gem</li>
+            <li><div>
+					<strong id="like_count">{{ gem.likes }}</strong> people like this gem.
+					<button id ="likes" data-gemid="{{gem.id}}" class="btn btn-primary btn-sm" type="button">Like</button>
+				</div>
+			</li>
         </ul>
         </div>
 
