@@ -7,7 +7,8 @@ html,
 body {
 	background-color: #D6D3C8;
 	font-family: Helvetica, Arial, sans-serif;
-	margin: 0;
+	margin: 0;#
+
 }
 
 /* ----------------------------------------------- */
@@ -51,7 +52,7 @@ header {
 	display:block;
 	height:12vh;
 	background-color: #D6D3C8;
-	color: white;
+	color: black;
 	text-align: center;
 	padding: 20px 10px;
 	font-size: 30px;
@@ -63,6 +64,10 @@ header {
 
 .header-right {
 	float:right;
+}
+
+.header-right li a {
+	color: blue;
 }
 
 .clearUL ul {
@@ -92,16 +97,22 @@ header {
 }
 
 .navbar-brand {
-	font-size: 20px;
+	font-size: 20px; 
+}
+
+.navbar a{
+	margin: 5px;
 }
 
 .navbar-default {
     background-color: #9FAFCE; /* alternatives? #8aa5d8 #91b0ea */
     border-color: #9FAFCE;
+    box-shadow: 0 5px 5px -5px #333; 
 }
 
 .alert {
     width: 23%;
+ 
 }
 
 /* ----------------------------------------------- */
@@ -117,6 +128,37 @@ header {
 .container-index .col {
 	position: relative;
 }
+
+.most_liked {
+	background-color: #9FAFCE;
+	margin: 10px;
+	box-shadow: 0 0 5px #333;
+}
+
+.most_liked li a {
+	color: black;
+	text-decoration: underline;
+}
+
+.most_recent li a {
+	color: black;
+	text-decoration: underline;
+}
+
+.most_recent {
+	background-color: #9FAFCE;
+	margin: 10px;
+	box-shadow: 0 0 5px #333;
+}
+
+.search {
+	margin: 10px;
+}
+
+.search_container{
+	text-align: center;
+}
+
 
 /* ----------------------------------------------- */
 /* SEARCH RESULTS */
@@ -149,11 +191,12 @@ header {
 /* ----------------------------------------------- */
 
 .add_gem h3 {
-	text-align:center;
+	text-align: center;
 }
 
 .add_gem form {
 	padding-left:150px;
+	text-align: left;
 
 }
 
@@ -174,6 +217,7 @@ header {
 
 }
 
+
 /* ----------------------------------------------- */
 /* FOOTER */
 /* ----------------------------------------------- */
@@ -184,5 +228,68 @@ header {
 	background-color: #D6D3C8;
 	color: white;
 	text-align:center;
-	
+	margin: 10px;
+}
+.footer_container {
+	text-align: center;	
+}
+
+/* Popup container - can be anything you want */
+.popup {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: blue;
+	text-decoration: underline;
+}
+
+/* The actual popup */
+.popup .popuptext {
+	display: inline-block;
+	visibility: hidden;
+	width: 250px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 0%;
+	margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+	visibility: visible;
+	-webkit-animation: fadeIn 1s;
+	animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;} 
+	to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1 ;}
 }

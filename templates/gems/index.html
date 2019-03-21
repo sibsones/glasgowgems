@@ -8,7 +8,7 @@
 {% block body_block %}
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col most_liked">
                 <h2>Most Liked Gems</h2>
                 {% if most_liked_gems %}
                     <ul>
@@ -21,14 +21,17 @@
                 {% endif %}
             </div>
 
-            <div class="col">
-                <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
-                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+
+            <div class="search_container">
+                <div class="col search">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
+                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="col">
+            <div class="col most_recent">
                 <h2>Most Recent Gems</h2>
                 {% if most_recent_gems %}
                     <ul>

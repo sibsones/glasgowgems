@@ -46,11 +46,22 @@
                     </div>
                 </div>
             </div>
+
+            <!-- javascript for pop up 'contact us' button-->
+            <script>
+            // When the user clicks on div, open the popup
+            function myFunction() {
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+            }
+            </script>
+
         </header>
             
         <!--To expand dropdown-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
         
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light navbar-default"> <!-- navbar-default from our CSS --> <!-- DEFAULT COLOURS <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> -->
@@ -106,8 +117,10 @@
         </div>
         <hr />
         
-        <div id="footer">
-            <a href="{% url 'contact_us' %}">Contact Us</a></li>
+        <div class="footer_container">
+            <div class="popup" onclick="myFunction()">Contact us
+                <span class="popuptext" id="myPopup">Please send an email to adminteam@glasgowgems.com with any queries or questions.</span>
+            </div>
         </div>
     </body>
 </html>
