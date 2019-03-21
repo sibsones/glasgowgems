@@ -20,6 +20,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="{% static 'js/glasgowgems-jquery.js' %}"></script>
 		<script src="{% static 'js/glasgowgems-ajax.js' %}"></script>
+        <script src="{% static 'js/contact-us-popup.js' %}"></script>
+
 		
         <title>
             Glasgow Gems - 
@@ -54,7 +56,8 @@
                 </div>
             </div>
 
-            <!-- javascript for pop up 'contact us' button-->
+            <!-- javascript for pop up 'contact us' button
+            #move to static js file
             <script>
             // When the user clicks on div, open the popup
             function myFunction() {
@@ -62,6 +65,7 @@
               popup.classList.toggle("show");
             }
             </script>
+            -->
 
         </header>
         
@@ -119,7 +123,7 @@
         <hr />
         
         <div class="footer_container">
-            <div class="popup" onclick="myFunction()">Contact us
+            <div class="popup" onclick="contact_us_popup()">Contact us
                 <span class="popuptext" id="myPopup">Please send an email to adminteam@glasgowgems.com with any queries or questions.</span>
             </div>
         </div>
