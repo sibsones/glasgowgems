@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^add-gem/$', views.add_gem, name='add_gem'),
-    url(r'^contact-us/$', views.contact_us, name='contact_us'),
 	url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
 		views.show_category, name='show_category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/(?P<gem_name_slug>[\w\-]+)/$',

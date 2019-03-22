@@ -16,13 +16,6 @@ def index(request):
     context_dict = {'categories': category_list, 'most_liked_gems': most_liked_gems,
                     'most_recent_gems': most_recent_gems}
     return render(request,'gems/index.html', context_dict)
-
-def contact_us(request):
-    category_list = Category.objects.all()
-    info = "Please send us an email to adminteam@glasgowgems.com " \
-           "and we will be back in touch as soon as possible."
-    context_dict = {'categories': category_list,'boldmessage': info}
-    return render(request, 'gems/contact_us.html', context_dict)
     
 def show_category(request, category_name_slug):
     context_dict = {}
@@ -124,7 +117,7 @@ def sign_up(request):
             # Did user provide profile image?
             if 'profile_image' in request.FILES:
                 # Retrieve it
-                profile.picture = request.FILES['profile_image']
+                profile.profile_image = request.FILES['profile_image']
             # Save profile!
             profile.save()
             # Indicate successful registration
@@ -206,9 +199,9 @@ def create_comment(request):
         if gem_id:
             gem = Gem.objects.get(id=int(gem_id))
             comment_text = request.POST.get('comment_text')
-            comment = Comment.objects.create(gem = gem, text=comment_text, added_by = request.user)
+            comment = Comment.objects.create(gem=gem, text=comment_text, added_by=request.user)
             comment.save() 
-    return redirect('show_gem',gem.category.slug,gem.slug)
+    return redirect('show_gem', gem.category.slug, gem.slug)
     
 def report(request):
     gem_id = None
@@ -243,4 +236,7 @@ def profile(request, username):
             return redirect('profile', user.username)
         else:
             print(form.errors)
-    return render(request, 'gems/profile.html',{'userprofile': userprofile, 'selecteduser': user, 'form': form})
+    category_list = Category.objects.all()
+    context_dict = {'userprofile': userprofile, 'selecteduser': user,
+                    'form': form, 'categories': category_list}
+    return render(request, 'gems/profile.html', context_dict)

@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.files.storage import default_storage
 from django.conf import settings
 from gems.models import Category, Gem, User, UserProfile
 from gems.forms import UserForm, UserProfileForm, GemForm
@@ -61,7 +62,8 @@ class GemModelTests(TestCase):
         
         # Create a test gem
         gem = Gem(category=category, name="Gem 1", address="Address 1",
-                  description="Description 1", image_source="Image source 1")
+                  description="Description 1", image_source="Image source 1",
+                  latitude=50.50, longitude=-4.40)
         gem.save()
         
         #Check there is only one gem
@@ -75,6 +77,8 @@ class GemModelTests(TestCase):
         self.assertEquals(gem.description, "Description 1")
         self.assertFalse(gem.image) # make more robust
         self.assertEquals(gem.image_source, "Image source 1")
+        self.assertEquals(gem.latitude, 50.50)
+        self.assertEquals(gem.longitude, -4.40)
         self.assertEquals(gem.likes, 0)
         self.assertEquals(gem.reported, False)
         self.assertEquals(gem.added_by, user)
@@ -112,9 +116,8 @@ class IndexViewTests(TestCase):
     def test_contactus_contains_our_email(self):
         # Check if the given message is in Contact us
         self.client.get(reverse('index'))
-        response = self.client.get(reverse('contact_us'))
-        info = "Please send us an email to adminteam@glasgowgems.com " \
-               "and we will be back in touch as soon as possible."
+        response = self.client.get(reverse('index'))
+        info = "Please send an email to adminteam@glasgowgems.com"
         self.assertIn(info.lower(), response.content.decode('ascii').lower())
 
 # 
@@ -368,14 +371,6 @@ class TemplateTests(TestCase):
         response = self.client.get(reverse('sign_up'))
         self.assertIn('Glasgow Gems - '.lower(), response.content.decode('ascii').lower())
         self.assertIn('Sign Up'.lower(), response.content.decode('ascii').lower())
-        
-        #=======================================================================
-        # ONCE PROFILE IS IN
-        # # Access profile page and check the title displayed
-        # response = self.client.get(reverse('profile'))
-        # self.assertIn('Glasgow Gems - '.lower(), response.content.decode('ascii').lower())
-        # self.assertIn('Profile'.lower(), response.content.decode('ascii').lower())
-        #=======================================================================
         
     def test_pages_using_templates(self):
         # Create user and log in

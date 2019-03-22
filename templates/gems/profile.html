@@ -1,22 +1,28 @@
 {% extends 'gems/base.html' %}
+{% load staticfiles %}
 
-{% block title %}
-	{{ selecteduser.username }} Profile
+{% block title_block %}
+    {{ selecteduser.username }}
 {% endblock %}
 
-
 {% block body_block %}
-	<img src="{{ MEDIA_URL }}{{userprofile. }}" width="300" height="300" alt="{{selecteduser.username}}" />
-	<br/>
-
-	<div>
-		{% if selecteduser.username == user.username %}
-			<form method="post" action='.' enctype="multipart/form-data">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<input type="submit" value="Update">
-			</form>
-		{% endif %}
-	</div>
-	<div id='edit_profile'></div>
+    {% if selecteduser.username == user.username %}
+    <h2>Welcome to your profile {{ selecteduser.username }}!</h2>
+    <br/>For now, you can see your profile image below (if uploaded) and change it, if needed.
+    Stay tuned for future improvements.
+    <img src="{{ MEDIA_URL }}{{ userprofile.profile_image }}" alt="{{ selecteduser.username }} profile image."/>
+    <br/>
+    <br/>
+    <div>
+        <form method="post" action='.' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    <div id='edit_profile'></div>
+    {% else %}
+        You are trying to access someone else's profile.
+        <a href="{% url 'profile' user.username %}">Your profile is here.</a>
+    {% endif %}
 {% endblock %}

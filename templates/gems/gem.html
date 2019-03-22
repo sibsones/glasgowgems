@@ -63,7 +63,7 @@
                     <div class="container">
                         <!-- Trigger the modal with a button -->
                         <button type="button" data-gemid="{{gem.id}}"  class="btn btn-primary btn-lg" id="comments">Add a comment</button>
-                        <button id ="report" data-gemid="{{gem.id}}" class="btn btn-link btn-sm" type="button">Report</button>
+                        <button id ="report" data-gemid="{{gem.id}}" class="btn btn-danger btn-sm" type="button">Report</button>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
@@ -72,21 +72,19 @@
                                     <div class="modal-body" style="padding:40px 50px;">
                                         <form role="form">
                                             <div class="form-group">
-                                                <input type="text"  class="form-control" id="comment" placeholder="Enter comment">
+                                                <input type="text"  class="form-control" id="comment" placeholder="Type a comment">
                                             </div>
-                                                <button type="submit" class="btn btn-primary btn-lg" onClick="history.go(0)"><span class="glyphicon glyphicon-off"></span>Submit</button>
+                                                <button type="submit" class="btn btn-primary btn-lg" onClick="history.go(0)"><span class=""></span>Submit</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class=""></span>Cancel</button>
                                     </div>
                                 </div>
                             </div>
                         </div> 
                     </div>
-                
                 {% endif %}
-                
                 </div>
             </div>
         </div>
@@ -96,4 +94,3 @@
     {% endif %}
 <br/><br/>
 {% endblock %}
-
