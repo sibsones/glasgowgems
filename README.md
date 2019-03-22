@@ -5,17 +5,23 @@ Glasgow Gems is a web app where pieces of architecture can be shared for other p
 
 ## Resources used
 
+### Bootstrap
+
+An open source toolkit for developing with HTML, CSS, and JS.
+
+https://getbootstrap.com/
+
 ### Leaflet
 
 An open-source JavaScript library for mobile-friendly interactive maps.
 
 https://leafletjs.com/
 
-### Bootstrap
+### Tango with Django
 
-An open source toolkit for developing with HTML, CSS, and JS.
+Tango With Django is a begginner's guide to Web Development using the popular Python Based Web Framework Django.
 
-https://getbootstrap.com/
+https://www.tangowithdjango.com/
 
 ### W3Schools
 
