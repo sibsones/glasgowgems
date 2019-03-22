@@ -107,13 +107,15 @@
                     {% endif %}
                 </li>
                 </ul>
+                {% url 'index' as index %}
+                {% if request.path != index %}
                 <div class="nav-search">
                     <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_results' %}">
                             <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search architecture" value='{{ request.GET.q }}' aria-label="Search">
                             
                     </form>
                 </div>
-
+                {% endif %}
                 
                 
                 

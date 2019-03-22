@@ -63,7 +63,7 @@ $(document).ready(function() {
 	    $.get('/report/', {gem_id: gemid}, function(data){
 	        $('#report').hide();
 	    });
-		alert("Thank you.");
+		alert("Thank you. An admin will review this gem.");
 	});
 });
 
