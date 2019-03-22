@@ -5,29 +5,23 @@ Glasgow Gems is a web app where pieces of architecture can be shared for other p
 
 ## Resources used
 
-----------------------------------------------------------------------------
-Leaflet
+### Leaflet
 
 An open-source JavaScript library for mobile-friendly interactive maps.
 
 https://leafletjs.com/
-----------------------------------------------------------------------------
 
-----------------------------------------------------------------------------
-Bootstrap
+### Bootstrap
 
 An open source toolkit for developing with HTML, CSS, and JS.
 
 https://getbootstrap.com/
-----------------------------------------------------------------------------
 
-----------------------------------------------------------------------------
-W3Schools
+### W3Schools
 
 Tutorials covering most aspects of web development and references on web development languages such as HTML, CSS, JavaScript, jQuery, Bootstrap.
 
 https://www.w3schools.com/
-----------------------------------------------------------------------------
 
 ## Requirements
 
@@ -43,5 +37,3 @@ https://www.w3schools.com/
 * six==1.12.0
 * urllib3==1.24.1
 * wincertstore==0.2
-
-
