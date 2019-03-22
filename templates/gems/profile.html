@@ -8,11 +8,12 @@
 {% block body_block %}
     {% if selecteduser.username == user.username %}
     <h2>Welcome to your profile {{ selecteduser.username }}!</h2>
+    <h2>For now, you can see your profile image, if uploaded, and change it, if needed. Stay tuned for future improvements.</h2>
     <br/>
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="{{ MEDIA_URL }}{{ userprofile.profile_image }}" alt="{{ selecteduser.username }} profile image." id="profile_image"/>
+                <img src="{{ MEDIA_URL }}{{ userprofile.profile_image }}" alt="{{ selecteduser.username }} profile image" id="profile_image"/>
                 <br/>
                 <br/>
                 <form method="post" action='.' enctype="multipart/form-data">
@@ -20,8 +21,6 @@
                     {{ form.as_p }}
                     <input type="submit" value="Update">
                 </form>
-                <p>For now, you can see your profile image below (if uploaded) and change it, if needed.
-    Stay tuned for future improvements.</p>
             </div>
         </div>
     </div>

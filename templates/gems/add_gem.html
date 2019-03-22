@@ -12,30 +12,31 @@
         <div class="row">
             
             <div class="col">
-                    <div id="add_gem_form">
-                            <form id="gem_form" enctype="multipart/form-data" method="post" action="{% url 'add_gem' %}">
-                                {% csrf_token %}
-                                {% for hidden in form.hidden_fields %}
-                                    {{ hidden }}
-                                    <!-- helps to debug form validation, just for reference, delete later
-                                    {% if hidden.errors %}
-                                        {{ hidden.errors }}
-                                        {{ hidden.name }}
-                                    {% endif %} -->
-                                {% endfor %}
-                                {% for field in form.visible_fields %}
-                                    {{ field.errors }}
-                                    {{ field.help_text }}
-                                    {{ field }}<br>
-                                {% endfor %}
-                                
-                                
-                                
-                                <input type="submit" name="submit" value="Add Gem" id="gem_button"/>
-                            </form>
-                    </div>
+                <div id="add_gem_form">
+                    <form id="gem_form" enctype="multipart/form-data" method="post" action="{% url 'add_gem' %}">
+                        {% csrf_token %}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                            <!-- helps to debug form validation, just for reference, delete later
+                            {% if hidden.errors %}
+                                {{ hidden.errors }}
+                                {{ hidden.name }}
+                            {% endif %} -->
+                        {% endfor %}
+                        {% for field in form.visible_fields %}
+                            {{ field.errors }}
+                            {{ field.help_text }}
+                            {{ field }}<br>
+                        {% endfor %}
+                        
+                        
+                        
+                        <input type="submit" name="submit" value="Add Gem" id="gem_button"/>
+                    </form>
+                </div>
             </div>
             <div class="col">
+                Click on the map to add the gem's location (click again to reposition):
                 <div id="mapid">
                     <script type="text/javascript" src="{% static 'js/map-showmap.js' %}"></script>
                     <script type="text/javascript" src="{% static 'js/map-addmarker.js' %}"></script>
