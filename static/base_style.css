@@ -122,12 +122,22 @@ nav {
 .navbar-default {
     background-color: #9FAFCE; /* alternatives? #8aa5d8 #91b0ea */
     border-color: #9FAFCE;
-    box-shadow: 0 5px 5px -5px #333; 
+    
 }
 
 .alert {
     width: 23%;
  
+}
+
+.nav-search {
+	float:right;
+}
+
+#search-button {
+	background-color:#9FAFCE;
+	color:black;
+	padding: 10px 20px;
 }
 
 /* ----------------------------------------------- */
@@ -230,18 +240,13 @@ nav {
 	text-align: center;
 }
 
-.add_gem form {
-	padding-left:150px;
-	text-align: left;
-
-}
 
 /* ----------------------------------------------- */
 /* MAP */
 /* ----------------------------------------------- */
 
 #mapid {
-    width: 500px;
+    width: 540px;
     height: 300px;
 }
 
