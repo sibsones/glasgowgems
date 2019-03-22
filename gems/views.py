@@ -124,7 +124,7 @@ def sign_up(request):
             # Did user provide profile image?
             if 'profile_image' in request.FILES:
                 # Retrieve it
-                profile.picture = request.FILES['picture']
+                profile.picture = request.FILES['profile_image']
             # Save profile!
             profile.save()
             # Indicate successful registration
