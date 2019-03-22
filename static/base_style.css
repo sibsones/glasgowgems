@@ -63,6 +63,7 @@ header {
 	color: black;
 	font-size: 30px;
 	padding-bottom:30px;
+	width:100%;
 }
 
 .header_img {
@@ -74,7 +75,6 @@ header {
 }
 
 .header-right {
-	justify-content: right;
 	float:right;
 }
 
@@ -132,13 +132,25 @@ nav {
 
 .nav-search {
 	float:right;
+	background-color:#9FAFCE;
+	color:black;
+	padding-top: 15px;
 }
 
 #search-button {
+	box-sizing:border-box;
+	border:1px solid black;
 	background-color:#9FAFCE;
 	color:black;
-	padding: 10px 20px;
 }
+
+#search-button-nav {
+	box-sizing:border-box;
+	border:1px solid black;
+	background-color:#D6D3C8;
+	color:black;
+}
+
 
 /* ----------------------------------------------- */
 /* INDEX */
@@ -231,6 +243,19 @@ nav {
 	width:auto;
 	height:auto;
 }
+
+#report {
+	float:right;
+	margin: 10px;
+	box-shadow: 0 0 5px #333;
+	width:auto;
+	height:auto;
+}
+
+.gem_image p {
+	text-align:center;
+}
+
 
 /* ----------------------------------------------- */
 /* ADD_GEM */
