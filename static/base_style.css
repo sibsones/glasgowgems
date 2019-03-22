@@ -126,7 +126,6 @@ nav {
 
 .alert {
     width: 23%;
- 
 }
 
 .nav-search {
@@ -304,6 +303,13 @@ input[type=submit] {
 	padding: 10px 20px;
 }
 
+.alert-danger {
+	margin:auto;
+	width:200px;
+}
+
+
+
 /* ----------------------------------------------- */
 /* SIGN_UP */
 /* ----------------------------------------------- */
@@ -312,6 +318,20 @@ input[type=submit] {
 	margin: 0 auto;
 	width:40%;
 }
+
+.register_message {
+	text-align: center;
+}
+
+/* ----------------------------------------------- */
+/* PROFILE */
+/* ----------------------------------------------- */
+
+#profile_image {
+	width:360px;
+	height:640x;
+}
+
 
 /* ----------------------------------------------- */
 /* FOOTER */

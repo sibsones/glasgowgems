@@ -18,15 +18,21 @@
             <br /><br />
 
             <div class="log_in_button">
-                <input type="submit" value="Enter" />
+                <input type="submit" value="Enter" /><br/>
             </div>
+            
+            <div>
+                <br>
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            
             <br />
         </form>
-        {% for message in messages %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}
+        
         
         <br />
         <p>Don't have an account?</p>
