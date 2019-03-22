@@ -9,7 +9,7 @@
     <div class="search-results">
         {% if search_results %}
         <br><br>
-        <p>Showing {{ search_results|length }} results for "{{ search }}":</p>
+        <p><strong>Showing {{ search_results|length }} results for "{{ search }}":</strong></p>
         
         <ul>
             {% for gem in search_results %}
