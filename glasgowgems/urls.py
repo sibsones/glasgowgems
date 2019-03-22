@@ -37,4 +37,5 @@ urlpatterns = [
 	url(r'^like/$', views.like_gem, name='like_gem'),
     url(r'^create_comment/$', views.create_comment, name='create_comment'),
     url(r'^report/$', views.report, name='report'),
+    url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

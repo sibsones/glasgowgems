@@ -1,0 +1,22 @@
+{% extends 'gems/base.html' %}
+
+{% block title %}
+	{{ selecteduser.username }} Profile
+{% endblock %}
+
+
+{% block body_block %}
+	<img src="{{ MEDIA_URL }}{{userprofile. }}" width="300" height="300" alt="{{selecteduser.username}}" />
+	<br/>
+
+	<div>
+		{% if selecteduser.username == user.username %}
+			<form method="post" action='.' enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Update">
+			</form>
+		{% endif %}
+	</div>
+	<div id='edit_profile'></div>
+{% endblock %}

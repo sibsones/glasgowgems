@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from gems.models import Category, Gem, Comment
+from gems.models import Category, Gem, Comment, User, UserProfile
 from gems.forms import GemForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -226,10 +226,21 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 	
-def profile(request):
-    if request.user.is_authenticated:
-        ### TO BE CHANGED WHEN PROFILE IS IMPLEMENTED
-        category_list = Category.objects.all()
-        return render(request, 'gems/contact_us.html', {'categories': category_list})
-    else:
-        return redirect('login')
+@login_required
+def profile(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    form = UserProfileForm({'picture': userprofile.profile_image})
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('profile', user.username)
+        else:
+            print(form.errors)
+    return render(request, 'gems/profile.html',{'userprofile': userprofile, 'selecteduser': user, 'form': form})

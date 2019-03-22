@@ -55,7 +55,7 @@
                         <ul>
                             {% if user.is_authenticated %}
                                 <li>Logged in as: {{ user.username }}</li>
-                                <li class="align"><a href="{% url 'profile' %}">Profile</a></li>
+                                <li class="align"><a href="{% url 'profile' user.username %}">Profile</a></li>
                                 <li class="align"> - </li>
                                 <li class="align"><a href="{% url 'logout' %}">Logout</a></li>
                             {% else %}
